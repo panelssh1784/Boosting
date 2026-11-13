@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midnight Boost | Premium</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#070b18;
+ --panel:rgba(17,27,49,.78);
+ --line:rgba(74,183,255,.22);
+ --cyan:#37ddff;
+ --blue:#448cff;
+ --purple:#a36bff;
+ --text:#f4f7ff;
+ --muted:#9baac5;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ font-family:Poppins,sans-serif;
+ color:var(--text);
+ background:var(--bg);
+ min-height:100vh;
+ overflow-x:hidden;
+}
+body:before,body:after{
+ content:"";
+ position:fixed;
+ width:300px;height:300px;
+ border-radius:50%;
+ filter:blur(100px);
+ opacity:.20;
+ z-index:-1;
+ animation:float 9s ease-in-out infinite alternate;
+}
+body:before{background:#075bff;top:5%;left:-130px}
+body:after{background:#9d24ff;right:-130px;bottom:5%;animation-delay:2s}
+@keyframes float{
+ from{transform:translate(0,0) scale(.9)}
+ to{transform:translate(65px,-50px) scale(1.2)}
+}
+@keyframes fadeUp{
+ from{opacity:0;transform:translateY(28px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@keyframes glow{
+ 0%,100%{box-shadow:0 0 8px #00cfff22}
+ 50%{box-shadow:0 0 24px #00cfff55}
+}
+@keyframes shine{
+ 0%{background-position:-200%}
+ 100%{background-position:200%}
+}
+@keyframes pulse{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.04)}
+}
+@keyframes rotate{
+ to{transform:rotate(360deg)}
+}
+@keyframes blink{
+ 50%{opacity:.4}
+}
+.hidden{display:none!important}
+.container{width:93%;max-width:1150px;margin:auto}
+header{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:22px 0;
+ animation:fadeUp .7s both;
+}
+.logo{
+ font-size:21px;font-weight:800;letter-spacing:1px;
+ background:linear-gradient(90deg,#fff,var(--cyan),var(--purple));
+ background-size:200%;
+ -webkit-background-clip:text;color:transparent;
+ animation:shine 5s linear infinite;
+}
+button{font-family:inherit;cursor:pointer}
+.btn{
+ border:0;border-radius:12px;padding:12px 18px;
+ color:white;font-weight:700;
+ background:linear-gradient(110deg,#087cff,#00cce8,#7b5cff);
+ background-size:200%;
+ transition:.3s;
+}
+.btn:hover{
+ transform:translateY(-3px) scale(1.02);
+ background-position:100%;
+ box-shadow:0 8px 25px #009dff55;
+}
+.outline{
+ border:1px solid #28cfff;background:#101c32;
+ color:#56dcff;border-radius:10px;padding:10px 15px;
+}
+.hero{
+ text-align:center;padding:45px 5px 35px;
+ animation:fadeUp .8s both;
+}
+.hero h1{
+ font-size:clamp(30px,6vw,55px);
+ line-height:1.2;font-weight:800;
+}
+.hero h1 span{
+ background:linear-gradient(90deg,#35dfff,#a47aff);
+ -webkit-background-clip:text;color:transparent;
+}
+.hero p{color:var(--muted);margin-top:13px;font-size:13px}
+.panel,.card{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:20px;
+ backdrop-filter:blur(18px);
+ box-shadow:0 12px 35px #0005;
+}
+.auth{max-width:420px;margin:45px auto;padding:25px;animation:fadeUp .7s}
+.auth h2{text-align:center;margin-bottom:8px}
+.auth p{text-align:center;color:var(--muted);font-size:12px}
+input{
+ width:100%;padding:14px;margin:9px 0;
+ color:white;background:#091426;
+ border:1px solid #294365;border-radius:11px;
+ outline:none;font-family:inherit;
+}
+input:focus{border-color:var(--cyan);box-shadow:0 0 12px #00cfff33}
+.auth .btn{width:100%;margin-top:10px}
+.switch{text-align:center;color:var(--muted);font-size:12px;margin-top:15px}
+.switch a{color:var(--cyan);cursor:pointer}
+.section-title{
+ font-size:23px;margin:34px 0 18px;
+ animation:fadeUp .6s both;
+}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:17px;
+}
+.card{
+ padding:22px;position:relative;overflow:hidden;
+ transition:.35s;animation:fadeUp .7s both;
+}
+.card:before{
+ content:"";position:absolute;top:-80px;right:-80px;
+ width:150px;height:150px;border-radius:50%;
+ background:#00bfff12;transition:.4s;
+}
+.card:hover{
+ transform:translateY(-7px);
+ border-color:#35dfff;
+ box-shadow:0 12px 35px #008dff28;
+}
+.card:hover:before{transform:scale(2)}
+.card h3{color:#5de2ff;font-size:18px}
+.price{font-size:30px;font-weight:800;margin:12px 0}
+.card ul{list-style:none;margin:15px 0}
+.card li{font-size:12px;color:#c5d2e9;margin:9px 0}
+.card li:before{content:"✦ ";color:#31e5bc}
+.card .btn{width:100%;position:relative;z-index:1}
+.featured{border-color:#24dfff;animation:glow 3s infinite}
+.tag{
+ display:inline-block;background:#073e58;color:#64e8ff;
+ padding:5px 10px;border-radius:20px;font-size:10px;
+ margin-bottom:10px;
+}
+.badge{
+ display:inline-block;padding:6px 12px;
+ border:1px solid #245a83;border-radius:30px;
+ font-size:11px;color:#69e5ff;margin:4px;
+}
+.toolbar{
+ display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px;
+}
+.filter{
+ padding:9px 14px;border-radius:30px;
+ color:#b9c9df;background:#101c32;
+ border:1px solid #294363;font-size:11px;
+ transition:.25s;
+}
+.filter.active,.filter:hover{
+ background:linear-gradient(90deg,#087cff,#00cde5);
+ color:white;border-color:transparent;
+}
+.search{margin-bottom:18px}
+.category{
+ margin:20px 0;padding:20px;
+ border:1px solid var(--line);
+ border-radius:19px;
+ background:linear-gradient(145deg,#101d34dd,#0a1225ee);
+ animation:fadeUp .65s both;
+}
+.category h3{
+ color:#57dcff;font-size:17px;
+ margin-bottom:14px;display:flex;align-items:center;gap:9px;
+}
+.category h3 span{font-size:21px}
+.price-list{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:10px;
+}
+.product{
+ display:flex;justify-content:space-between;align-items:center;
+ gap:8px;padding:12px;
+ border:1px solid #263c5b;border-radius:12px;
+ background:#101a2caa;
+ transition:.25s;
+ animation:fadeUp .5s both;
+}
+.product:hover{
+ transform:translateX(5px);
+ border-color:#38d9ff;
+ background:#142b45;
+}
+.product-name{font-size:11px;color:#d6e2f5}
+.product-price{
+ color:#53dfff;font-weight:700;font-size:12px;
+ white-space:nowrap;
+}
+.no-result{color:var(--muted);text-align:center;padding:25px}
+.note{font-size:11px;color:#8fa3c1;margin-top:12px}
+.service-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.modal-bg{
+ position:fixed;inset:0;background:#000c;
+ display:flex;align-items:center;justify-content:center;
+ padding:15px;z-index:20;backdrop-filter:blur(9px);
+ animation:fadeUp .25s;
+}
+.modal{
+ width:100%;max-width:420px;padding:25px;
+ background:#101c32;border:1px solid #37dfff;
+ border-radius:20px;box-shadow:0 0 40px #00bfff33;
+ animation:fadeUp .35s;
+}
+.modal h2{color:var(--cyan);margin-bottom:12px}
+.close{float:right;background:none;color:white;font-size:24px}
+.gcash{
+ background:#071326;padding:17px;border-radius:13px;
+ margin:15px 0;line-height:2;font-size:13px;
+ border:1px solid #294365;
+}
+.modal .btn{width:100%;margin-top:10px}
+footer{text-align:center;padding:35px 10px;color:#7185a5;font-size:11px}
+@media(max-width:500px){
+ .container{width:94%}
+ .hero{padding-top:30px}
+ .category{padding:14px}
+ .product{padding:11px 9px}
+ .product-name{font-size:10px}
+ .section-title{font-size:20px}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+ <div class="logo">MIDNIGHT BOOST</div>
+ <button class="outline hidden" id="logout" onclick="logout()">LOGOUT</button>
+</header>
+
+<!-- REGISTER -->
+<div id="signup" class="auth panel">
+ <h2>CREATE ACCOUNT</h2>
+ <p>Join our premium boosting membership.</p>
+ <input id="regUser" placeholder="Username">
+ <input id="regEmail" type="email" placeholder="Email address">
+ <input id="regPass" type="password" placeholder="Password">
+ <button class="btn" onclick="register()">CREATE ACCOUNT</button>
+ <div class="switch">Already registered? <a onclick="showLogin()">Sign In</a></div>
+</div>
+
+<!-- LOGIN -->
+<div id="signin" class="auth panel hidden">
+ <h2>WELCOME BACK</h2>
+ <p>Sign in to access all services and plans.</p>
+ <input id="loginUser" placeholder="Username or Email">
+ <input id="loginPass" type="password" placeholder="Password">
+ <button class="btn" onclick="login()">SIGN IN</button>
+ <div class="switch">No account? <a onclick="showSignup()">Register here</a></div>
+</div>
+
+<!-- MAIN -->
+<main id="dashboard" class="hidden">
+
+<section class="hero">
+ <div class="badge">✦ PREMIUM MEMBERSHIP ✦</div>
+ <h1>BOOST YOUR <span>ONLINE WORLD</span></h1>
+ <p>Premium services • Affordable prices • Exclusive membership</p>
+ <p id="welcome"></p>
+</section>
+
+<h2 class="section-title">✦ MEMBERSHIP PLANS</h2>
+
+<div class="grid">
+
+<div class="card">
+ <h3>7 DAYS PLAN</h3>
+ <div class="price">₱180</div>
+ <ul>
+  <li>Free access all boosting tools</li>
+  <li>3% price discount</li>
+  <li>No hassle order</li>
+ </ul>
+ <button class="btn" onclick="order('7 Days Plan','₱180')">ORDER NOW</button>
+</div>
+
+<div class="card">
+ <h3>15 DAYS PLAN</h3>
+ <div class="price">₱250</div>
+ <ul>
+  <li>Free access all boosting tools</li>
+  <li>3% price discount</li>
+  <li>No hassle order</li>
+ </ul>
+ <button class="btn" onclick="order('15 Days Plan','₱250')">ORDER NOW</button>
+</div>
+
+<div class="card featured">
+ <span class="tag">MOST POPULAR</span>
+ <h3>1 MONTH PLAN</h3>
+ <div class="price">₱699</div>
+ <ul>
+  <li>Free access all boosting tools</li>
+  <li>35% price discount</li>
+  <li>No hassle order</li>
+  <li>Free 5K followers</li>
+  <li>Free 5K views</li>
+  <li>Free premium services access</li>
+ </ul>
+ <button class="btn" onclick="order('1 Month Plan','₱699')">ORDER NOW</button>
+</div>
+
+<div class="card">
+ <span class="tag">LIFETIME ACCESS</span>
+ <h3>LIFETIME PLAN</h3>
+ <div class="price">₱1,100</div>
+ <ul>
+  <li>All access</li>
+  <li>Free 10K followers</li>
+  <li>Free 10K views</li>
+  <li>Free Canva 3 months</li>
+  <li>40% price discount</li>
+ </ul>
+ <button class="btn" onclick="order('Lifetime Plan','₱1,100')">ORDER NOW</button>
+</div>
+
+</div>
+
+<h2 class="section-title">✦ AVAILABLE SERVICES</h2>
+<div class="panel" style="padding:20px">
+
+<input class="search" id="search" placeholder="⌕ Search service or price..." oninput="renderServices()">
+
+<div class="toolbar" id="filters"></div>
+<div id="services"></div>
+
+<p class="note">Prices are displayed as provided. Availability and service terms may vary.</p>
+</div>
+
+</main>
+</div>
+
+<!-- PAYMENT -->
+<div id="paymentModal" class="modal-bg hidden">
+ <div class="modal">
+  <button class="close" onclick="closeModal()">×</button>
+  <h2>✦ ORDER MEMBERSHIP</h2>
+  <p id="selectedPlan" style="font-size:13px"></p>
+  <div class="gcash">
+   <strong>GCASH PAYMENT</strong><br>
+   Number: <strong>09701987001</strong><br>
+   Account Name: <strong>M.R</strong>
+  </div>
+  <p class="note">Send your payment screenshot to Telegram. Membership activation follows payment verification.</p>
+  <button class="btn" onclick="telegramOrder()">CONTINUE TO TELEGRAM ↗</button>
+ </div>
+</div>
+
+<footer>© 2026 MIDNIGHT BOOST · PREMIUM SERVICES</footer>
+
+<script>
+/* ACCOUNT SYSTEM - LOCAL BROWSER STORAGE */
+function accounts(){
+ return JSON.parse(localStorage.getItem("midnightAccounts")||"[]");
+}
+function register(){
+ let username=regUser.value.trim();
+ let email=regEmail.value.trim();
+ let password=regPass.value;
+ if(!username||!email||!password)return alert("Complete all fields.");
+ let list=accounts();
+ if(list.some(x=>x.username===username||x.email===email))
+ return alert("Username or email already exists.");
+ list.push({username,email,password});
+ localStorage.setItem("midnightAccounts",JSON.stringify(list));
+ alert("Account created!");
+ showLogin();
+}
+function login(){
+ let id=loginUser.value.trim(),pass=loginPass.value;
+ let user=accounts().find(x=>(x.username===id||x.email===id)&&x.password===pass);
+ if(!user)return alert("Incorrect login details.");
+ localStorage.setItem("midnightSession",user.username);
+ showDashboard(user.username);
+}
+function showSignup(){
+ signup.classList.remove("hidden");
+ signin.classList.add("hidden");
+}
+function showLogin(){
+ signup.classList.add("hidden");
+ signin.classList.remove("hidden");
+}
+function showDashboard(name){
+ signup.classList.add("hidden");
+ signin.classList.add("hidden");
+ dashboard.classList.remove("hidden");
+ logoutBtn();
+ welcome.textContent="Welcome, "+name+" ✦";
+ renderFilters();
+ renderServices();
+}
+function logoutBtn(){
+ document.getElementById("logout").classList.remove("hidden");
+}
+function logout(){
+ localStorage.removeItem("midnightSession");
+ dashboard.classList.add("hidden");
+ document.getElementById("logout").classList.add("hidden");
+ showLogin();
+}
+
+/* ALL SERVICE CATEGORIES AND PRICES */
+const data=[
+{
+ category:"Social Media",
+ icon:"🌐",
+ items:[
+ ["Facebook Followers","₱45 / 1K"],
+ ["Facebook Reactions","₱34 / 1K"],
+ ["Facebook Shares","₱36 / 1K"],
+ ["Facebook Positive Comments","₱480 / 1K"],
+ ["Facebook Views","₱39 / 1K"],
+ ["Facebook Reels Views","₱35 / 1K"],
+ ["Instagram Followers","₱50 / 1K"],
+ ["TikTok Views","₱30 / 1K"],
+ ["YouTube Views","₱60 / 1K"]
+ ]
+},
+{
+ category:"Streaming Platforms",
+ icon:"🎬",
+ items:[
+ ["Netflix Shared","₱95"],
+ ["Netflix Solo Profile 2D","₱195"],
+ ["Loklok Basic Shared","₱95"],
+ ["Loklok Basic Solo","₱185"],
+ ["Loklok Standard Shared","₱120"],
+ ["Loklok Standard Solo","₱290"],
+ ["HBO 1M Shared","₱90"],
+ ["HBO 1M Solo Profile 1D","₱110"],
+ ["HBO 1M Solo Profile 2D","₱130"],
+ ["Prime 1M Solo Profile","₱180"],
+ ["Prime 1M Solo Account","₱135"],
+ ["Viu 1M Shared","₱96"],
+ ["Viu 3M Shared","₱250"],
+ ["Viu 1M Solo","₱130"],
+ ["VivaOne 1M Shared","₱95"],
+ ["VivaOne 1M Solo","₱150"],
+ ["VivaOne 1M Shared","₱95"],
+ ["VivaOne 1M Solo","₱180"],
+ ["iWantTFC 1M Shared","₱98"],
+ ["iWantTFC 1M Solo","₱145"],
+ ["iQIYI 1M Shared","₱96"],
+ ["iQIYI 1M Solo","₱140"],
+ ["Crunchyroll 1M Shared","₱99"],
+ ["Crunchyroll 1M Solo Profile","₱120"],
+ ["Crunchyroll 1M Solo Account","₱140"]
+ ]
+},
+{
+ category:"Premium Apps & Editing",
+ icon:"✨",
+ items:[
+ ["CapCut 7D Shared","₱94"],
+ ["CapCut 7D Solo","₱120"],
+ ["CapCut 1M Shared","₱140"],
+ ["CapCut 1M Solo","₱190"],
+ ["Alight Motion 1YR Solo","₱150"],
+ ["Picsart 1M Shared","₱120"],
+ ["Picsart 1M Solo","₱130"],
+ ["Wink 7D Solo","₱190"],
+ ["ChatGPT Plus Shared","₱190"],
+ ["ChatGPT Plus Solo","₱800"],
+ ["Quillbot 1M Shared","₱90"],
+ ["Quillbot 1M Solo","₱110"]
+ ]
+},
+{
+ category:"Canva Services",
+ icon:"🎨",
+ items:[
+ ["Canva 1M via Invite","₱55"],
+ ["Canva 2M via Invite","₱90"],
+ ["Canva 3M via Invite","₱120"],
+ ["Canva 6M via Invite","₱150"],
+ ["Canva 12M via Invite","₱220"],
+ ["Canva 3M Straight via Invite","₱120"],
+ ["Canva Lifetime via Edu 3M","₱300"],
+ ["Canva Lifetime via Edu 5M","₱390"],
+ ["Canva Lifetime via Edu 10M","₱450"],
+ ["Canva Lifetime via Edu 12M","₱520"]
+ ]
+},
+{
+ category:"Education & Productivity",
+ icon:"📚",
+ items:[
+ ["Microsoft 365 1M via Invite","₱98"],
+ ["Microsoft 365 2M via Invite","₱100"],
+ ["Microsoft 365 3M via Invite","₱130"],
+ ["Microsoft 365 6M via Invite","₱200"],
+ ["Microsoft 365 12M via Invite","₱350"],
+ ["Scribd 1M Solo","₱96"],
+ ["Scribd 1M Shared","₱100"],
+ ["Grammarly 1M Shared","₱99"],
+ ["Grammarly 1M Solo","₱130"],
+ ["Studocu 1M Solo","₱145"],
+ ["Studocu 12M Solo","₱180"]
+ ]
+},
+{
+ category:"Music & Video",
+ icon:"🎧",
+ items:[
+ ["Spotify 3M Provider Account","₱199"],
+ ["YouTube Premium via Invite","₱90"],
+ ["YouTube Premium Solo","₱120"],
+ ["YouTube Premium Family Head","₱130"]
+ ]
+}
+];
+
+let activeCategory="All";
+
+function renderFilters(){
+ let box=document.getElementById("filters");
+ let categories=["All",...data.map(x=>x.category)];
+ box.innerHTML=categories.map(c=>
+ `<button class="filter ${activeCategory===c?'active':''}"
+ onclick="setCategory('${c.replace(/'/g,"\\'")}')">${c==="All"?"✦ All":c}</button>`
+ ).join("");
+}
+function setCategory(c){
+ activeCategory=c;
+ renderFilters();
+ renderServices();
+}
+function renderServices(){
+ const query=document.getElementById("search").value.toLowerCase();
+ const box=document.getElementById("services");
+ let html="";
+ let count=0;
+ data.forEach(group=>{
+  if(activeCategory!=="All"&&activeCategory!==group.category)return;
+  let items=group.items.filter(item=>
+   (item[0]+" "+item[1]).toLowerCase().includes(query)
+  );
+  if(!items.length)return;
+  count+=items.length;
+  html+=`
+  <section class="category">
+   <h3><span>${group.icon}</span>${group.category}
+   <span class="badge">${items.length} ITEMS</span></h3>
+   <div class="price-list">
+    ${items.map((item,i)=>`
+     <div class="product" style="animation-delay:${Math.min(i*35,350)}ms">
+      <span class="product-name">${item[0]}</span>
+      <span class="product-price">${item[1]}</span>
+     </div>`).join("")}
+   </div>
+  </section>`;
+ });
+ box.innerHTML=count?html:'<div class="no-result">No matching services found.</div>';
+}
+
+/* ORDER AND TELEGRAM */
+let currentOrder={};
+function order(plan,price){
+ currentOrder={plan,price};
+ document.getElementById("selectedPlan").textContent=plan+" — "+price;
+ document.getElementById("paymentModal").classList.remove("hidden");
+}
+function closeModal(){
+ document.getElementById("paymentModal").classList.add("hidden");
+}
+function telegramOrder(){
+ let username=localStorage.getItem("midnightSession")||"Customer";
+ let msg="Hello! I want to order a membership plan.\n"+
+ "Username: "+username+"\n"+
+ "Plan: "+currentOrder.plan+"\n"+
+ "Price: "+currentOrder.price+"\n"+
+ "GCash: 09701987001\n"+
+ "Account: M.R";
+ window.open("https://t.me/jasper131313?text="+encodeURIComponent(msg),"_blank");
+}
+
+/* RESTORE SESSION */
+const saved=localStorage.getItem("midnightSession");
+if(saved)showDashboard(saved);
+else showSignup();
+</script>
+</body>
+</html>
